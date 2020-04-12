@@ -1,10 +1,33 @@
 package com.antriksh.app.ls.api;
 
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class UserInfoDTO {
 
-	private String userName="vikash";
+	@NotBlank(message = "* Your name can't be blank")
+	@Size(min = 3, max = 15, message = " *Your Name should have char between 3-15")
+	private String userName;
+
+
+	@NotBlank(message = "* Crush name can't be blank")
+	@Size(min = 3, max = 15, message = " *Crush Name should have char between 3-15")
 	
-	private String crushName="saheli";
+	private String crushName;
+	@AssertTrue(message = "you have to agree term and condition")
+	private boolean termAndCondition;
+
+	
+	public boolean isTermAndCondition() {
+
+		return termAndCondition;
+	}
+
+	public void setTermAndCondition(boolean termAndCondition) {
+		this.termAndCondition = termAndCondition;
+	}
 
 	public String getUserName() {
 		return userName;
